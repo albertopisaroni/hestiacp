@@ -119,43 +119,22 @@ applyRandomPassword = function (min_length = 16) {
 	generate_mail_credentials();
 };
 
-generate_mail_credentials = function () {
-	var div = $('.js-mail-info').clone();
-	div.find('#mail_configuration').remove();
-	var output = div.text();
-	output = output.replace(/(?:\r\n|\r|\n|\t)/g, '|');
-	output = output.replace(/ {2}/g, '');
-	output = output.replace(/\|\|/g, '|');
-	output = output.replace(/\|\|/g, '|');
-	output = output.replace(/\|\|/g, '|');
-	output = output.replace(/^\|+/g, '');
-	output = output.replace(/\|$/, '');
-	output = output.replace(/ $/, '');
-	output = output.replace(/:\|/g, ': ');
-	output = output.replace(/\|/g, '\n');
-	$('.js-hidden-credentials').val(output);
-};
-
 $(document).ready(function () {
 	$('.js-account-output').text($('input[name=v_account]').val());
 	$('.js-password-output').text($('input[name=v_password]').val());
-	generate_mail_credentials();
 
 	$('input[name=v_account]').change(function () {
 		$('.js-account-output').text($(this).val());
-		generate_mail_credentials();
 	});
 
 	$('input[name=v_password]').change(function () {
 		if ($('input[name=v_password]').attr('type') == 'text')
 			$('.js-password-output').text($(this).val());
 		else $('.js-password-output').text(Array($(this).val().length + 1).join('*'));
-		generate_mail_credentials();
 	});
 
 	$('.toggle-psw-visibility-icon').click(function () {
 		$('.js-password-output').text($('input[name=v_password]').val());
-		generate_mail_credentials();
 	});
 
 	$('#mail_configuration').change(function (evt) {
@@ -188,6 +167,5 @@ $(document).ready(function () {
 				$('#td_smtp_encryption').text(opt.attr('no_encryption'));
 				break;
 		}
-		generate_mail_credentials();
 	});
 });

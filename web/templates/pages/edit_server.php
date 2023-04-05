@@ -53,7 +53,7 @@
 
 		<div class="form-container">
 			<h1 class="form-title">
-				<?= _("Configuring Server") ?>
+				<?= _("Configure Server") ?>
 			</h1>
 			<?php show_alert_message($_SESSION); ?>
 
@@ -210,7 +210,7 @@
 							<?= $_SESSION["UPGRADE_SEND_EMAIL_LOG"] == "true" ? "checked" : "" ?>
 						>
 						<label for="v_upgrade_send_email_log">
-							<?= _("SYSTEM_UPGRADE_SEND_EMAIL_LOG") ?>
+							<?= _("Send update installation log by email") ?>
 						</label>
 					</div>
 				</div>
@@ -271,7 +271,7 @@
 							</p>
 							<div class="alert alert-info u-mb10" role="alert">
 								<i class="fas fa-info"></i>
-								<p><?= _("Please wait while php is installed or removed") ?></p>
+								<p><?= _("It may take a few minutes to save your changes. Please wait until the process has completed and do not refresh the page.") ?></p>
 							</div>
 						</div>
 						<?php foreach ($v_php_versions as $php_version) { ?>
@@ -388,7 +388,7 @@
 						</p>
 						<?php if (!empty($_SESSION["ANTIVIRUS_SYSTEM"])) { ?>
 							<p>
-								<?= _("Antivirus") ?>:
+								<?= _("Anti-Virus") ?>:
 								<span class="u-ml5">
 									<?= $_SESSION["ANTIVIRUS_SYSTEM"] ?>
 								</span>
@@ -399,7 +399,7 @@
 						<?php } ?>
 						<?php if (!empty($_SESSION["ANTISPAM_SYSTEM"])) { ?>
 							<p>
-								<?= _("AntiSpam") ?>:
+								<?= _("Spam Filter") ?>:
 								<span class="u-ml5">
 									<?= $_SESSION["ANTISPAM_SYSTEM"] ?>
 								</span>
@@ -411,7 +411,7 @@
 						<?php if ($_SESSION["WEBMAIL_SYSTEM"]) { ?>
 							<div class="u-mt15 u-mb10">
 								<label for="v_webmail_alias" class="form-label">
-									<?= _("Webmail URL") ?>
+									<?= _("Webmail Alias") ?>
 									<span x-cloak x-text="`${webmailAlias}.example.com`" class="hint"></span>
 								</label>
 								<input
@@ -517,7 +517,7 @@
 						<?php if ($v_mysql == "yes") { ?>
 							<div class="u-mb20">
 								<label for="v_mysql_url" class="form-label">
-									<?= _("phpMyAdmin URL") ?>
+									<?= _("phpMyAdmin Alias") ?>
 								</label>
 								<input
 									type="text"
@@ -628,7 +628,7 @@
 							</div>
 							<div class="u-mb20">
 								<label for="v_pgsql_url" class="form-label">
-									<?= _("phpPgAdmin URL") ?>
+									<?= _("phpPgAdmin Alias") ?>
 								</label>
 								<input type="text" class="form-control" name="v_pgsql_url" id="v_pgsql_url" value="<?= $_SESSION["DB_PGA_ALIAS"] ?>">
 							</div>
@@ -775,16 +775,16 @@
 								id="backup_type"
 							>
 								<option value="ftp">
-									<?= _("ftp") ?>
+									FTP
 								</option>
 								<option value="sftp">
-									<?= _("sftp") ?>
+									SFTP
 								</option>
 								<option value="b2">
-									<?= _("Backblaze") ?>
+									Backblaze
 								</option>
 								<option value="rclone">
-									<?= _("Rclone") ?>
+									Rclone
 								</option>
 							</select>
 						</div>
@@ -867,7 +867,7 @@
 							</div>
 							<div class="u-mb10">
 								<label for="v_backup_application_id" class="form-label">
-									<?= _("Key ID") ?>
+									Key ID
 								</label>
 								<input
 									type="text"
@@ -879,7 +879,7 @@
 							</div>
 							<div class="u-mb10">
 								<label for="v_backup_application_key" class="form-label">
-									<?= _("Application Key") ?>
+									Application Key
 								</label>
 								<input
 									type="text"
@@ -924,7 +924,7 @@
 			<details class="collapse u-mb10">
 				<summary class="collapse-header">
 					<i class="fas fa-lock u-mr15"></i>
-					<?= _("SSL") ?>
+					SSL
 				</summary>
 				<div class="collapse-content">
 					<div class="u-mb20">
@@ -937,7 +937,7 @@
 									href="/generate/ssl/?domain=<?= htmlentities(trim($v_hostname, '"')) ?>"
 									target="_blank"
 								>
-									<?= _("Generate CSR") ?>
+									<?= _("Generate Self-Signed SSL Certificate") ?>
 								</a>
 							</span>
 						</label>
@@ -949,7 +949,7 @@
 					</div>
 					<div class="u-mb20">
 						<label for="v_ssl_key" class="form-label">
-							<?= _("SSL Key") ?>
+							<?= _("SSL Cerficate Key") ?>
 						</label>
 						<textarea
 							class="form-control u-min-height100 u-console"
@@ -959,7 +959,7 @@
 					</div>
 					<ul class="values-list">
 						<li class="values-list-item">
-							<span class="values-list-label"><?= _("SUBJECT") ?></span>
+							<span class="values-list-label"><?= _("Domain") ?></span>
 							<span class="values-list-value"><?= $v_ssl_subject ?></span>
 						</li>
 						<?php if ($v_ssl_aliases) { ?>
@@ -969,23 +969,23 @@
 							</li>
 						<?php } ?>
 						<li class="values-list-item">
-							<span class="values-list-label"><?= _("NOT_BEFORE") ?></span>
+							<span class="values-list-label"><?= _("Not Before") ?></span>
 							<span class="values-list-value"><?= $v_ssl_not_before ?></span>
 						</li>
 						<li class="values-list-item">
-							<span class="values-list-label"><?= _("NOT_AFTER") ?></span>
+							<span class="values-list-label"><?= _("Not After") ?></span>
 							<span class="values-list-value"><?= $v_ssl_not_after ?></span>
 						</li>
 						<li class="values-list-item">
-							<span class="values-list-label"><?= _("SIGNATURE") ?></span>
+							<span class="values-list-label"><?= _("Signature") ?></span>
 							<span class="values-list-value"><?= $v_ssl_signature ?></span>
 						</li>
 						<li class="values-list-item">
-							<span class="values-list-label"><?= _("PUB_KEY") ?></span>
+							<span class="values-list-label"><?= _("Public Key") ?></span>
 							<span class="values-list-value"><?= $v_ssl_pub_key ?></span>
 						</li>
 						<li class="values-list-item">
-							<span class="values-list-label"><?= _("ISSUER") ?></span>
+							<span class="values-list-label"><?= _("Issuer") ?></span>
 							<span class="values-list-value"><?= $v_ssl_issuer ?></span>
 						</li>
 					</ul>
@@ -1327,7 +1327,7 @@
 			<details class="collapse u-mb10">
 				<summary class="collapse-header">
 					<i class="fas fa-puzzle-piece u-mr15"></i>
-					<?= _("Hestia Control Panel Plugins") ?>
+					<?= _("Plugins") ?>
 				</summary>
 				<div class="collapse-content">
 					<div class="u-mb10">
@@ -1345,7 +1345,7 @@
 					</div>
 					<div class="u-mb10">
 						<label for="v_filemanager" class="form-label">
-							<?= _("Filemanager") ?>
+							<?= _("File Manager") ?>
 						</label>
 						<select class="form-select" name="v_filemanager" id="v_filemanager">
 							<option value="false">
@@ -1358,7 +1358,7 @@
 					</div>
 					<div class="u-mb10">
 						<label for="v_quota" class="form-label">
-							<?= _("FileSystem Disk Quota") ?>
+							<?= _("File System Disk Quota") ?>
 						</label>
 						<select class="form-select" name="v_quota" id="v_quota">
 							<option value="no">

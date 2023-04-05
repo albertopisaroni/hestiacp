@@ -4,7 +4,7 @@
 		<div class="toolbar-buttons">
 			<a class="button button-secondary" id="btn-back" href="/edit/user/?token=<?= $_SESSION["token"] ?>"><i class="fas fa-arrow-left icon-blue"></i><?= _("Back") ?></a>
 						<?php if ($_SESSION["userContext"] === "admin" && isset($_GET["user"]) && $_GET["user"] !== "admin") { ?>
-						<a href="/add/key/?user=<?= htmlentities($_GET["user"]) ?>" class="button button-secondary" id="btn-create"><i class="fas fa-circle-plus icon-green"></i><?= _("Add SSH Key") ?></a>
+						<a href="/add/key/?user=<?= htmlentities($_GET["user"]) ?>" class="button button-secondary" id="btn-create"><i class="fas fa-circle-plus icon-green"></i><?= _("Add SSH key") ?></a>
 						<?php } else { ?>
 			<a href="/add/key/" class="button button-secondary" id="btn-create"><i class="fas fa-circle-plus icon-green"></i><?= _("Add SSH Key") ?></a>
 						<?php } ?>
@@ -45,7 +45,7 @@
 										href="/delete/key/?key=<?= $key ?>&token=<?= $_SESSION["token"] ?>"
 									<?php } ?>
 									data-confirm-title="<?= _("Delete") ?>"
-									data-confirm-message="<?= sprintf(_("DELETE_KEY_CONFIRM"), $key) ?>"
+									data-confirm-message="<?= sprintf(_("Are you sure you want to delete SSH key %s?"), $key) ?>"
 								>
 									<i class="fas fa-trash icon-red icon-dim"></i>
 								</a>
@@ -62,7 +62,7 @@
 <footer class="app-footer">
 	<div class="container app-footer-inner">
 		<p>
-			<?php printf(ngettext("%d SSH Key", "%d SSH Keys", $i), $i); ?>
+			<?php printf(ngettext("%d SSH key", "%d SSH keys", $i), $i); ?>
 		</p>
 	</div>
 </footer>

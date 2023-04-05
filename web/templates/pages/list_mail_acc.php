@@ -11,7 +11,7 @@ if (!empty($_SESSION["WEBMAIL_ALIAS"])) {
 			<a class="button button-secondary" id="btn-back" href="/list/mail/"><i class="fas fa-arrow-left icon-blue"></i><?= _("Back") ?></a>
 			<?php if ($read_only !== "true") { ?>
 				<a href="/add/mail/?domain=<?= htmlentities($_GET["domain"]) ?>" class="button button-secondary" id="btn-create"><i class="fas fa-circle-plus icon-green"></i><?= _("Add Mail Account") ?></a>
-				<a href="/edit/mail/?domain=<?= htmlentities($_GET["domain"]) ?>" class="button button-secondary" id="btn-create"><i class="fas fa-pencil icon-blue"></i><?= _("Editing Mail Domain") ?></a>
+				<a href="/edit/mail/?domain=<?= htmlentities($_GET["domain"]) ?>" class="button button-secondary" id="btn-create"><i class="fas fa-pencil icon-blue"></i><?= _("Edit Mail Domain") ?></a>
 			<?php } ?>
 		</div>
 		<div class="toolbar-right">
@@ -34,12 +34,12 @@ if (!empty($_SESSION["WEBMAIL_ALIAS"])) {
 						<input type="hidden" name="token" value="<?= $_SESSION["token"] ?>">
 						<input type="hidden" value="<?= htmlspecialchars($_GET["domain"]) ?>" name="domain">
 						<select class="form-select" name="action">
-							<option value=""><?= _("apply to selected") ?></option>
-							<option value="suspend"><?= _("suspend") ?></option>
-							<option value="unsuspend"><?= _("unsuspend") ?></option>
-							<option value="delete"><?= _("delete") ?></option>
+							<option value=""><?= _("Apply to selected") ?></option>
+							<option value="suspend"><?= _("Suspend") ?></option>
+							<option value="unsuspend"><?= _("Unsuspend") ?></option>
+							<option value="delete"><?= _("Delete") ?></option>
 						</select>
-						<button type="submit" class="toolbar-input-submit" title="<?= _("apply to selected") ?>">
+						<button type="submit" class="toolbar-input-submit" title="<?= _("Apply to selected") ?>">
 							<i class="fas fa-arrow-right"></i>
 						</button>
 					</form>
@@ -85,7 +85,7 @@ if (!empty($_SESSION["WEBMAIL_ALIAS"])) {
 				$status = 'suspended';
 				$spnd_action = 'unsuspend';
 				$spnd_icon = 'fa-play';
-				$spnd_confirmation = _('UNSUSPEND_MAIL_ACCOUNT_CONFIRMATION');
+				$spnd_confirmation = _('Are you sure you want to unsuspend %s?');
 				if ($data[$key]['ALIAS'] == '') {
 					$alias_icon = 'fa-circle-minus';
 				} else {
@@ -105,7 +105,7 @@ if (!empty($_SESSION["WEBMAIL_ALIAS"])) {
 				$status = 'active';
 				$spnd_action = 'suspend';
 				$spnd_icon = 'fa-pause';
-				$spnd_confirmation = _('SUSPEND_MAIL_ACCOUNT_CONFIRMATION');
+				$spnd_confirmation = _('Are you sure you want to suspend %s?');
 				if ($data[$key]['ALIAS'] == '') {
 					$alias_icon = 'fa-circle-minus';
 				} else {
@@ -172,7 +172,7 @@ if (!empty($_SESSION["WEBMAIL_ALIAS"])) {
 										class="data-controls js-confirm-action"
 										href="/delete/mail/?domain=<?=htmlspecialchars($_GET['domain'])?>&account=<?=$key?>&token=<?=$_SESSION['token']?>"
 										data-confirm-title="<?= _("Delete") ?>"
-										data-confirm-message="<?= sprintf(_('DELETE_MAIL_ACCOUNT_CONFIRMATION'), $key) ?>"
+										data-confirm-message="<?= sprintf(_('"Are you sure you want to delete %s?'), $key) ?>"
 									>
 										<i class="fas fa-trash icon-red icon-dim"></i>
 									</a>
